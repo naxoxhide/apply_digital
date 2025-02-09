@@ -1,0 +1,53 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.13.1
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm run lint
+      - run: pnpm run build
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node 22.13.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.13.1
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm run test
+
+  test-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node 22.13.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22.13.1
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm run test:e2e
