@@ -1,37 +1,27 @@
-name: Continuous Integration
+name: pnpm Example Workflow
 on:
   push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
-    types:
-      - opened
-      - reopened
-      - synchronize
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         node-version: [22.13.1]
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install pnpm
-        run: npm install -g pnpm@latest-10
-      - name: Install Dependencies
-        run: pnpm install     
-      - name: Run Tests
-        run: pnpm test
-        working-directory: src/
+    - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
+    - name: run test
+      run: pnpm run test
+    - name: run lint
+      run: pnpm run lint
