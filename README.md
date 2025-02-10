@@ -8,14 +8,16 @@
 <h1 align="center">Apply Digital - BackEnd </h1>
 
 <p align="center">
- NestJs + Docker + Mongo for manage products adn reports
+ NestJs + Docker + Mongo for manage products and reports
+</p>
 
- <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-v5.x-blue.svg" alt="typescript"/></a>
- <a href="https://docs.nestjs.com/v10/"><img src="https://img.shields.io/badge/pnpm-v9.x-purple.svg" alt="npm"/></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
- <a href="https://docs.nestjs.com/v10/"><img src="https://img.shields.io/badge/pnpm-v10.x-purple.svg" alt="npm"/></a>
-  <a href="https://www.mongodb.com"><img src="https://img.shields.io/badge/mongo-v8.0-green.svg" alt="mongodb"/></a>
-<a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Dockerized 🐳_-blue.svg" alt="docker"/></a>
+<p align="center">
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-v5.x-blue.svg" alt="typescript"/></a>
+  <a href="https://docs.nestjs.com/v10/"><img src="https://img.shields.io/badge/pnpm-v9.x-purple.svg" alt="npm"/></a>
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+  <a href="https://docs.nestjs.com/v10/"><img src="https://img.shields.io/badge/pnpm-v10.x-purple.svg" alt="npm"/></a>
+    <a href="https://www.mongodb.com"><img src="https://img.shields.io/badge/mongo-v8.0-green.svg" alt="mongodb"/></a>
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Dockerized 🐳_-blue.svg" alt="docker"/></a>
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
