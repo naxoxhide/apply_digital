@@ -11,17 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var ReportsService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReportsService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const product_schema_1 = require("../products/schemas/product.schema");
-let ReportsService = class ReportsService {
+let ReportsService = ReportsService_1 = class ReportsService {
     constructor(productModel) {
         this.productModel = productModel;
+        this.logger = new common_1.Logger(ReportsService_1.name);
     }
     async getDeletedPercentage() {
+        this.logger.log('Calculating deleted percentage...');
         const total = await this.productModel.countDocuments();
         const deleted = await this.productModel.countDocuments({
             deletedAt: { $ne: null },
@@ -30,6 +33,7 @@ let ReportsService = class ReportsService {
         return `${percentage.toFixed(3)}%`;
     }
     async getNonDeletedPercentage(params) {
+        this.logger.log('Calculating non-deleted percentage...');
         const query = { deletedAt: null };
         if (params.hasPrice !== undefined) {
             query.price = params.hasPrice ? { $exists: true } : { $exists: false };
@@ -47,6 +51,7 @@ let ReportsService = class ReportsService {
         return `${percentage.toFixed(3)}%`;
     }
     async getCustomReport() {
+        this.logger.log('Generating custom report...');
         const report = await this.productModel.aggregate([
             { $group: { _id: '$category', count: { $sum: 1 } } },
         ]);
@@ -54,7 +59,7 @@ let ReportsService = class ReportsService {
     }
 };
 exports.ReportsService = ReportsService;
-exports.ReportsService = ReportsService = __decorate([
+exports.ReportsService = ReportsService = ReportsService_1 = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(product_schema_1.Product.name)),
     __metadata("design:paramtypes", [mongoose_2.Model])

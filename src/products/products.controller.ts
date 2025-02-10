@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { Product } from './schemas/product.schema';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 
 @ApiTags('Products')
 @Controller('products')
@@ -16,6 +16,12 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
+  @ApiParam({ name: 'page', required: false })
+  @ApiParam({ name: 'limit', required: false })
+  @ApiParam({ name: 'name', required: false })
+  @ApiParam({ name: 'category', required: false })
+  @ApiParam({ name: 'minPrice', required: false })
+  @ApiParam({ name: 'maxPrice', required: false })
   @ApiOperation({ summary: 'Get products' })
   @ApiResponse({ status: 200, description: 'Products found' })
   @ApiResponse({ status: 404, description: 'Products not found' })

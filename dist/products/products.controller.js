@@ -37,6 +37,12 @@ let ProductsController = class ProductsController {
 exports.ProductsController = ProductsController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiParam)({ name: 'page', required: false }),
+    (0, swagger_1.ApiParam)({ name: 'limit', required: false }),
+    (0, swagger_1.ApiParam)({ name: 'name', required: false }),
+    (0, swagger_1.ApiParam)({ name: 'category', required: false }),
+    (0, swagger_1.ApiParam)({ name: 'minPrice', required: false }),
+    (0, swagger_1.ApiParam)({ name: 'maxPrice', required: false }),
     (0, swagger_1.ApiOperation)({ summary: 'Get products' }),
     (0, swagger_1.ApiResponse)({ status: 200, description: 'Products found' }),
     (0, swagger_1.ApiResponse)({ status: 404, description: 'Products not found' }),

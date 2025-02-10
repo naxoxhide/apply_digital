@@ -3,6 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User, UserDocument } from './schemas/users.schema';
 export declare class UsersService {
     private readonly userModel;
+    private readonly logger;
     constructor(userModel: Model<UserDocument>);
     create(createUserDto: CreateUserDto): Promise<User>;
     findOneByEmail(email: string): Promise<User | null>;

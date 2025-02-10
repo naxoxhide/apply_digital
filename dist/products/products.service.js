@@ -51,6 +51,7 @@ let ProductsService = ProductsService_1 = class ProductsService {
         }
     }
     async getProducts(filters) {
+        this.logger.log('Fetching products with filters: ' + JSON.stringify(filters));
         const { page, limit, name, category, minPrice, maxPrice } = filters;
         const query = {};
         if (name)
@@ -69,12 +70,13 @@ let ProductsService = ProductsService_1 = class ProductsService {
         return { data, total };
     }
     async softDeleteProduct(productId) {
+        this.logger.log('Soft deleting product with ID: ' + productId);
         await this.productModel.updateOne({ contentfulId: productId }, { $set: { deletedAt: new Date() } });
     }
 };
 exports.ProductsService = ProductsService;
 __decorate([
-    (0, schedule_1.Cron)('* * * * *'),
+    (0, schedule_1.Cron)('0 * * * *'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
