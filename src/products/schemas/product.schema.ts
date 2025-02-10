@@ -22,6 +22,9 @@ export class Product {
 
   @Prop({ type: Date, default: Date.now })
   createdAt: Date;
+
+  @Prop({ type: Date, default: Date.now })
+  startDate: Date;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

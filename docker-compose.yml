@@ -6,3 +6,15 @@ services:
       - "27017:27017"
     volumes:
       - ./data:/data/db
+  api:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: apply_digital_backend
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/applydb
+    command: npm run start:dev

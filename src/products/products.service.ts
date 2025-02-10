@@ -31,6 +31,8 @@ export class ProductsService {
         name: item.fields.name,
         category: item.fields.category,
         price: item.fields.price,
+        createdAt: item.sys.createdAt,
+        startDate: item.sys.updatedAt,
       }));
 
       for (const product of products) {
@@ -48,6 +50,7 @@ export class ProductsService {
   }
 
   async getProducts(filters: any) {
+    this.logger.log('Fetching products with filters: ' + JSON.stringify(filters));
     const { page, limit, name, category, minPrice, maxPrice } = filters;
 
     const query: any = {};
@@ -65,6 +68,7 @@ export class ProductsService {
   }
 
   async softDeleteProduct(productId: string): Promise<void> {
+    this.logger.log('Soft deleting product with ID: ' + productId);
     await this.productModel.updateOne(
       { contentfulId: productId },
       { $set: { deletedAt: new Date() } },

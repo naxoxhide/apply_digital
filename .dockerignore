@@ -2,5 +2,5 @@ node_modules
 dist
 npm-debug.log
 Dockerfile
+dockerfile
 docker-compose.yml
-.env

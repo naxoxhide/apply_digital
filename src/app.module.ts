@@ -15,7 +15,7 @@ import { UsersModule } from './users/users.module';
       isGlobal: true,
     }),
     ScheduleModule.forRoot(),
-    MongooseModule.forRoot('mongodb://mongo:27017/applydb'),
+    MongooseModule.forRoot(process.env.DATABASE_URL),
     ProductsModule,
     ReportsModule,
     AuthModule,

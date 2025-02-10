@@ -1,6 +1,7 @@
 import {
   Injectable,
   UnauthorizedException,
+  Logger,
 } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 
@@ -10,12 +11,14 @@ import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
   ) {}
 
   async login({ email, password }: LoginDto) {
+    this.logger.log('Logging in...');
     const user = await this.usersService.findByEmailWithPassword(email);
     if (!user) {
       throw new UnauthorizedException('email is wrong');
